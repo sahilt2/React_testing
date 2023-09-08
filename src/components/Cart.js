@@ -3,7 +3,7 @@ import { useAppSelector } from "../app/hooks";
 import Product from "./Product";
 
 const Cart = () => {
-    const cartItems = useAppSelector(state => state.cart.cart);
+    const cartItems = useAppSelector(state => state.cart);
     console.log("CartItems; ", cartItems)
 
     return (
