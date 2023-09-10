@@ -1,7 +1,7 @@
 import { Button } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import { useAppDispatch } from "../app/hooks";
-import { addToCart, removeItemFromCart } from "../features/cartSlice";
+import { changeQuantity } from "../features/cartSlice";
 
 const Product = (props) => {
     const { image, title, price, rating, description, quantity } = props;
@@ -11,16 +11,18 @@ const Product = (props) => {
     const location = useLocation();
 
 const handleAddProduct = () => {
-    console.log("Product: ", product)
-    dispatch(addToCart(product))
+    dispatch(changeQuantity({ ...product, quantity: 1 }))
 }
 
 const handleRemoveProduct = () => {
-    console.log("Product: ", product)
-    dispatch(removeItemFromCart(product))
+    dispatch(changeQuantity({ ...product, quantity: -1 }))
 }
 
-console.log("useLocation: ", useLocation())
+const handleIncreaseQuantity = (quantity) => {
+    // Could be used later to increase quantity by more than 1
+    dispatch(changeQuantity({ ...product, quantity }))
+}
+
 
 return (
     <section className="Detail">
@@ -34,7 +36,7 @@ return (
             <h2>{title} </h2>
             <h2>{quantity ? `Quantity: ${quantity}` : ""}</h2>
             </div>
-            <div classNAme="Detail_info">
+            <div className="Detail_info">
                 <span className="Detail_info-price">{price}</span>
                 <span className="Detail_info-rating">Rating: {rating.rate}</span>
             </div>

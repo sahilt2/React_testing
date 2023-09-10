@@ -7,7 +7,7 @@ import Product from "./Product";
 const List = () => {
     const products = useSelector(state => state.products.products);
     const dispatch = useAppDispatch();
-    const cartItems = useAppSelector(state => state.cart);
+    const cartItems = useAppSelector(state => state.cart.cart);
 
     useEffect(() => {
         if(products.length < 1) dispatch(fetchProducts());
