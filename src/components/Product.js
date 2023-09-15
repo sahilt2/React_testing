@@ -18,7 +18,7 @@ const handleRemoveProduct = () => {
     dispatch(changeQuantity({ ...product, quantity: -1 }))
 }
 
-const handleIncreaseQuantity = (quantity) => {
+const handleChangeQuantityByNumber = (quantity) => {
     // Could be used later to increase quantity by more than 1
     dispatch(changeQuantity({ ...product, quantity }))
 }
