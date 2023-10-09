@@ -1,4 +1,4 @@
-import { Button } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import { useAppDispatch } from "../app/hooks";
 import { changeQuantity } from "../features/cartSlice";
@@ -25,28 +25,34 @@ const handleChangeQuantityByNumber = (quantity) => {
 
 
 return (
-    <section className="Detail">
-
-        <article className="Detail_thumbnail">
-            <img src={image} alt={title} />
-        </article>
-
-        <article className="Detail_info">
-            <div className="Detail_info-header">
-            <h2>{title} </h2>
-            <h2>{quantity ? `Quantity: ${quantity}` : ""}</h2>
-            </div>
-            <div className="Detail_info">
-                <span className="Detail_info-price">{price}</span>
-                <span className="Detail_info-rating">Rating: {rating.rate}</span>
-            </div>
-            <p className="Detail_info-description">{description}</p>
-            <Button variant="primary" onClick={handleAddProduct}>Add to Cart</Button>
-            {location.pathname === "/cart" && <Button variant="danger" onClick={handleRemoveProduct}>Remove from Cart</Button>}
-            {(cartItems.length > 0 && cartItems.find(item => item.id === product.id)) && <Button variant="danger" onClick={handleRemoveProduct}>Remove from Cart</Button>}
-        </article>
-
-    </section>
+<section className="Detail">
+<Card style={{ width: '20rem', height: "40rem" }}>
+    <Card.Img variant="top" src={image} style={{ height: '10rem', objectFit: 'contain', padding: "1rem" }} />
+    <Card.Body className="d-flex flex-column justify-content-between">
+      <Card.Title>{title}</Card.Title>
+      <Card.Text>
+        {description}
+      </Card.Text>
+      <div className="d-flex justify-content-between align-items-center">
+  <div className="Detail_info">
+    <span className="Detail_info-price p-1">{price} €</span>
+  </div>
+  <div className="Detail_info-header">
+    <span>{quantity ? `Quantity: ${quantity}` : ""}</span>
+  </div>
+</div>
+    </Card.Body>
+    <Card.Footer>
+        <Button variant="primary" onClick={handleAddProduct} hidden={location.pathname !== "/cart"}>
+            Add to Cart
+        </Button>
+        <Button variant="danger" onClick={handleRemoveProduct} hidden={!cartItems.find((item) => item.id === product.id)}>
+            Remove from Cart
+        </Button>
+        <Button variant="primary" onClick={handleAddProduct} hidden={location.pathname !== "/"}>Add to Cart</Button>
+    </Card.Footer>
+  </Card>
+</section>
 )
 }
 
