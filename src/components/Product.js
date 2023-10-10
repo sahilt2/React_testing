@@ -25,7 +25,7 @@ const handleChangeQuantityByNumber = (quantity) => {
 }
 
 return (
-<section className="Detail">
+<section className="Detail" data-testid="product">
 <Card style={{ width: '20rem', height: "40rem" }}>
     <Card.Img variant="top" src={image} style={{ height: '10rem', objectFit: 'contain', padding: "1rem" }} />
     <div className="d-flex align-items-center mb-2 p-2">
@@ -49,7 +49,7 @@ return (
         <Button variant="primary" onClick={handleAddProduct} hidden={location.pathname !== "/cart"}>
             Add to Cart
         </Button>
-        <Button variant="danger" onClick={handleRemoveProduct} hidden={!cartItems.find((item) => item.id === product.id)}>
+        <Button variant="danger" onClick={handleRemoveProduct} hidden={!cartItems?.find((item) => item.id === product.id)}>
             Remove from Cart
         </Button>
         <Button variant="primary" onClick={handleAddProduct} hidden={location.pathname !== "/"}>Add to Cart</Button>

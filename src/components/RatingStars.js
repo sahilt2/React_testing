@@ -9,21 +9,21 @@ const RatingStars = ({ rating }) => {
   const hasHalfStar = rate % 1 >= 0.5;
 
   for (let i = 0; i < fullStars; i++) {
-    stars.push(<FaStar key={i} />);
+    stars.push(<FaStar key={i} data-testid="full-star"/>);
   }
 
   if (hasHalfStar) {
-    stars.push(<FaStarHalfAlt key={fullStars} />);
+    stars.push(<FaStarHalfAlt key={fullStars} data-testid="half-star"/>);
   }
 
   while (stars.length < 5) {
-    stars.push(<FaRegStar key={stars.length} />);
+    stars.push(<FaRegStar key={stars.length} data-testid="empty-star"/>);
   }
 
   return (
     <div>
       {stars}
-      <span>({count})</span>
+      <span data-testid="count">({count})</span>
     </div>
   );
 };

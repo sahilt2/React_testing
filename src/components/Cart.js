@@ -14,7 +14,7 @@ const Cart = () => {
             <Container className="d-flex flex-wrap justify-content-between">
             {cartItems.length === 0 && <p>Your cart is empty</p>}
             {cartItems.map((item) => (
-                 <Product {...item} />
+                 <Product {...item} key={item.id}/>
             ))}
             </Container>
             {cartItems.length > 0 && (
