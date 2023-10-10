@@ -2,6 +2,7 @@ import { Button, Card } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import { useAppDispatch } from "../app/hooks";
 import { changeQuantity } from "../features/cartSlice";
+import RatingStars from "./RatingStars";
 
 const Product = (props) => {
     const { image, title, price, rating, description, quantity } = props;
@@ -23,11 +24,13 @@ const handleChangeQuantityByNumber = (quantity) => {
     dispatch(changeQuantity({ ...product, quantity }))
 }
 
-
 return (
 <section className="Detail">
 <Card style={{ width: '20rem', height: "40rem" }}>
     <Card.Img variant="top" src={image} style={{ height: '10rem', objectFit: 'contain', padding: "1rem" }} />
+    <div className="d-flex align-items-center mb-2 p-2">
+  <RatingStars rating={rating} />
+</div>
     <Card.Body className="d-flex flex-column justify-content-between">
       <Card.Title>{title}</Card.Title>
       <Card.Text>
