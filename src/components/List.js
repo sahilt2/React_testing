@@ -13,6 +13,7 @@ const List = () => {
     useEffect(() => {
         if(products.length < 1) dispatch(fetchProducts());
     }, [dispatch, products])
+    console.log(products);
 
     return (
         <div>

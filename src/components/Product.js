@@ -19,10 +19,10 @@ const handleRemoveProduct = () => {
     dispatch(changeQuantity({ ...product, quantity: -1 }))
 }
 
-const handleChangeQuantityByNumber = (quantity) => {
-    // Could be used later to increase quantity by more than 1
-    dispatch(changeQuantity({ ...product, quantity }))
-}
+// const handleChangeQuantityByNumber = (quantity) => {
+//     // Could be used later to increase quantity by more than 1
+//     dispatch(changeQuantity({ ...product, quantity }))
+// }
 
 return (
 <section className="Detail" data-testid="product">
